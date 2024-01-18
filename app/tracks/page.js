@@ -1,11 +1,11 @@
-"use client";
+"use client"
 import Link from 'next/link';
 import styles from './tracks.module.css';
 
 export default function Page() {
   const generateEventDiv = (eventId, title, description) => (
     <Link key={eventId} href={`/tracks/problem_statements/problem${eventId.slice(2)}`} passHref>
-      <div className={`${styles[eventId]} ${styles.Event}`}>
+      <div className={`${styles.Ev} ${styles.Event}`}>
         <h1 className={styles.heading}>{title}</h1>
         <p className={styles.para}>{description}</p>
       </div>
