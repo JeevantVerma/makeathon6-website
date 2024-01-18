@@ -21,7 +21,7 @@ export default function Page() {
           <div className={styles.container}>
             {(() => {
               const result = [];
-              for (let i = 1; i <= 5; i++) {
+              for (let i = 1; i <= 4; i++) {
                 result.push(
                   generateEventDiv(`Ev${i}`, `Event ${i}`, `Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero deserunt, doloremque tenetur cupiditate exercitationem temporibus tempore eligendi maiores, provident ut quos, facere velit ratione necessitatibus voluptas ullam inventore dolores sit.`)
                 );
