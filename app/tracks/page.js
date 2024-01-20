@@ -1,24 +1,32 @@
 "use client"
-import Link from 'next/link';
+import React, { useState } from 'react';
 import styles from './tracks.module.css';
-import Content from './data.json'
+import Content from './data.json';
 
 export default function Page() {
+  const [selectedEvent, setSelectedEvent] = useState(null);
+
+  const handleEventClick = (event) => {
+    setSelectedEvent(event);
+  };
+
+  const handleGoBack = () => {
+    setSelectedEvent(null);
+  };
+
   const generateEventDiv = (event) => {
     const { id, title, description } = event;
     return (
-      <Link key={id} href={`/tracks/problem_statements/problem${id}`} passHref>
-        <div className={`${styles.Ev} ${styles.Event}`}>
-          <h1 className={styles.heading}>{title}</h1>
-          <p className={styles.para}>{description}</p>
-        </div>
-      </Link>
+      <div key={id} className={`${styles.Ev} ${styles.Event}`} onClick={() => handleEventClick(event)}>
+        <h1 className={styles.heading}>{title}</h1>
+        <p className={styles.para}>{description}</p>
+      </div>
     );
   };
 
   return (
     <>
-      <div className={styles.main}>
+      <div className={`${styles.main} ${styles.htmlBody}`}>
         <h1 className={styles.heading}>Events</h1>
         <p className={styles.para}>--------------------------------------------------------</p>
         <div>
@@ -27,6 +35,15 @@ export default function Page() {
           </div>
         </div>
       </div>
+      {selectedEvent && (
+        <div className={`${styles.popup} ${styles.activePopup}`}>
+          <button className={styles.btn} onClick={handleGoBack}>
+            Go back
+          </button>
+          <h1 className={styles.heading}>{selectedEvent.title}</h1>
+          <p className={styles.para}>{selectedEvent.problemStatement}</p>
+        </div>
+      )}
     </>
   );
 }
