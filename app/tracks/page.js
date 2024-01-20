@@ -26,17 +26,17 @@ export default function Page() {
 
   return (
     <>
-      <div className={`${styles.main} ${styles.htmlBody}`}>
+      <body className={styles.main}>
         <h1 className={styles.heading}>Events</h1>
-        <p className={styles.para}>--------------------------------------------------------</p>
+        <p></p>
         <div>
           <div className={styles.container}>
             {Content.map((event) => generateEventDiv(event))}
           </div>
         </div>
-      </div>
+      </body>
       {selectedEvent && (
-        <div className={`${styles.popup} ${styles.activePopup}`}>
+        <div className={`${styles.popup} ${styles.popup.active}`}>
           <button className={styles.btn} onClick={handleGoBack}>
             Go back
           </button>
